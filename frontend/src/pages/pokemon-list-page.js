@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import PokemonList from '../components/pokemon-list-comp';
+import './pokemon-list-page.css';
 
 function PokemonListPage() {
 
   return (
-    <div>
-        <h1>Pokémon List</h1>
+    <div 
+    style={{
+      overflowX: 'none'
+  }}
+    >
+        <div>navbar</div>
+        <div>navbar</div>
+        <div>navbar</div>
+        <div>navbar</div>
+        <div>navbar</div>
+        <div>navbar</div>
         <PokemonList />
     </div>
   );

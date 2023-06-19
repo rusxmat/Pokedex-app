@@ -27,15 +27,31 @@ function PokemonList() {
     };
 
     return (
-        <div>
+        <div
+            style={{
+                margin: "0px 10% 0px"
+            }}
+        >
             <InfiniteScroll
                 dataLength={pokemonList.length}
                 next={fetchPokemonList}
                 hasMore={pokemonList.length < pokemonSizeList}
+                style={{
+                    overflowX: "hidden"
+                }}
             >
-                <Row xs={1} md={5}>
+                <Row xs={1} md={5}
+                    style={{
+                        margin: '0px'
+                    }}
+                >
                     {pokemonList.map((pokemon, index) => (
-                        <Col key={index}>
+                        <Col key={index}
+                            style={{
+                                margin: '0px',
+                                padding: '0.5%'
+                            }}
+                        >
                             <PokemonCard pokemon={pokemon.url}/>
                         </Col>
                     ))}
