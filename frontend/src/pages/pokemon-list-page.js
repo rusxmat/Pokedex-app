@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PokemonList from '../components/pokemon-list-comp';
-import './pokemon-list-page.css';
 
 function PokemonListPage() {
 

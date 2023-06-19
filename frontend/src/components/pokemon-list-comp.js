@@ -3,24 +3,50 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import PokemonCard from './pokemon-card-comp';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Dropdown from 'react-bootstrap/Dropdown';
+import axios from 'axios';
+
+const PAGE_SIZE = 10;
 
 function PokemonList() {
-    const [pokemonSizeList, setpokemonSizeList] = useState(0);
+    const [pokemonSizeList, setpokemonSizeList] = useState(1000);
     const [pokemonList, setPokemonList] = useState([]);
-    const [pokemonListPage, setPokemonListPage] = useState(0);
+    const [pokemonPageNo, setPokemonPageNo] = useState(0);
+    const [selectedSort, setSelectedSort] = useState("ID: Ascending");
+
+
+    const sortTypes = new Map([
+        ["ID: Ascending", ['id', 'asc']],
+        ["ID: Descending", ['id', 'desc']],
+        ["Name: Ascending", ['name', 'asc']],
+        ["Name: Descending", ['name', 'desc']],
+    ]);
+
+    const sortTypeArray = [
+        'ID: Ascending',
+        'ID: Descending',
+        'Name: Ascending',
+        'Name: Descending'
+    ]
 
     useEffect(() => {
         fetchPokemonList();
-    }, []);
+    }, [selectedSort]);
 
     const fetchPokemonList = async () => {
-        setPokemonListPage(pokemonListPage + 1);
-        console.log(pokemonListPage)
         try {
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10&offset=' + (10*pokemonListPage));
-            const data = await response.json();
-            setpokemonSizeList(data.count);
-            setPokemonList([...pokemonList, ...data.results]);
+            const response = await axios.get(
+                'http://localhost:3001/pokemon?',{
+                    params: {
+                        sort: sortTypes.get(selectedSort)[0],
+                        order: sortTypes.get(selectedSort)[1],
+                        offset: PAGE_SIZE*pokemonPageNo,
+                        limit: PAGE_SIZE,
+                    }
+                }
+            )
+            await setPokemonList([...pokemonList , ...response.data]);
+            setPokemonPageNo(pokemonPageNo + 1);
         } catch (error) {
             console.error('Failed to fetch data:', error.message);
         }
@@ -32,6 +58,30 @@ function PokemonList() {
                 margin: "0px 10% 0px"
             }}
         >
+        <div>
+            <div>
+                <Dropdown>
+                    <Dropdown.Toggle>
+                        {selectedSort}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                    {sortTypeArray.map((sortTypes) => (
+                        <Dropdown.Item
+                        onClick={(e) => {
+                            setSelectedSort(sortTypes)
+                            setPokemonList([])
+                            setPokemonPageNo(0)
+                        }}
+                        >
+                        {sortTypes}
+                        </Dropdown.Item>
+                    ))}
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+        </div>
+
+        {(pokemonList.length > 0)?
             <InfiniteScroll
                 dataLength={pokemonList.length}
                 next={fetchPokemonList}
@@ -57,8 +107,9 @@ function PokemonList() {
                     ))}
                 
             </Row>
-            </InfiniteScroll>
-        </div>
+            </InfiniteScroll>      :
+       <       div>Loading...</div>}
+       </div>
     );
 }
 
