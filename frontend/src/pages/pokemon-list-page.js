@@ -4,11 +4,7 @@ import PokemonList from '../components/pokemon-list-comp';
 function PokemonListPage() {
 
   return (
-    <div 
-    style={{
-      overflowX: 'none'
-  }}
-    >
+    <div >
         <div>navbar</div>
         <div>navbar</div>
         <div>navbar</div>

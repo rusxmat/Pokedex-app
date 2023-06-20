@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button';
 
 const PAGE_SIZE = 10;
 
@@ -16,6 +15,7 @@ function PokemonList() {
     const [pokemonPageNo, setPokemonPageNo] = useState(0);
     const [selectedSort, setSelectedSort] = useState("ID: Ascending");
     const [searchPokemonQuery, setsearchPokemonQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const sortTypes = new Map([
         ["ID: Ascending", ['id', 'asc']],
@@ -61,10 +61,9 @@ function PokemonList() {
                 margin: "0px 10% 0px"
             }}
         >
-
             <div>
                 <Form>
-                    <Form.Label>Search: </Form.Label>
+                    <Form.Label>Filter: </Form.Label>
                     <Form.Control 
                         placeholder='Search a Pokemon...'
                         onChange={(e) => {
@@ -97,34 +96,36 @@ function PokemonList() {
                 </Dropdown>
             </div>
 
-            {(pokemonList.length > 0)?
-                <InfiniteScroll
-                    dataLength={pokemonList.length}
-                    next={fetchPokemonList}
-                    hasMore={pokemonList.length < pokemonSizeList}
-                    style={{
-                        overflowX: "hidden"
-                    }}
-                >
-                    <Row xs={1} md={5}
+            {
+                (pokemonList.length > 0)?
+                    <InfiniteScroll
+                        dataLength={pokemonList.length}
+                        next={fetchPokemonList}
+                        hasMore={pokemonList.length < pokemonSizeList}
                         style={{
-                            margin: '0px'
+                            overflowX: "hidden"
                         }}
                     >
-                        {pokemonList.map((pokemon, index) => (
-                            <Col key={index}
-                                style={{
-                                    margin: '0px',
-                                    padding: '0.5%'
-                                }}
-                            >
-                                <PokemonCard pokemon={pokemon.url}/>
-                            </Col>
-                        ))}
-                    
-                </Row>
-                </InfiniteScroll>:
-                <div>Loading...</div>}
+                        <Row xs={1} md={5}
+                            style={{
+                                margin: '0px'
+                            }}
+                        >
+                            {pokemonList.map((pokemon, index) => (
+                                <Col key={index}
+                                    style={{
+                                        margin: '0px',
+                                        padding: '0.5%'
+                                    }}
+                                >
+                                    <PokemonCard pokemon={pokemon.url}/>
+                                </Col>
+                            ))}
+                        
+                    </Row>
+                    </InfiniteScroll>:
+                    <div>No Pokemon found</div>
+            }
        </div>
     );
 }

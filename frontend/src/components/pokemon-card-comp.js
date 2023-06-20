@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
-import Form from 'react-bootstrap/Form';
+import { useNavigate } from "react-router-dom";
 
 function PokemonCard({pokemon}) {    
-
+    const navigate = useNavigate();
     const [pokemonDetails, setPokemonDetails] = useState();
 
     function getDisplayName(pokemonName){
@@ -33,6 +33,10 @@ function PokemonCard({pokemon}) {
         }
     };
 
+    const handleCardClick = () => {
+        navigate(`/pokemon/${pokemonDetails.id}`);
+    }
+
     return (
         pokemonDetails ?
         (<Card 
@@ -45,6 +49,8 @@ function PokemonCard({pokemon}) {
                 // background: '-moz-linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), -moz-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%)',
                 // background: 'linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%)',
             }}
+
+            onClick={handleCardClick}
         >
             <img
                 // style={{

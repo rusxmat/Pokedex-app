@@ -60,6 +60,41 @@ app.get('/pokemon', async (req, res) => {
     }
 });
 
+app.get('/pokemon-details', async (req, res) => {
+    const id = req.query.id
+
+    try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        
+        const pokemon = response.data;
+        const pokemonType = response.data.types;
+
+        const responseTypes = await Promise.all(Object.values(pokemonType).map(type => axios.get(type.type.url)));
+        const typeData = responseTypes.map(response => response.data)
+
+        var weakness = []
+        typeData.forEach( (typeObj, i) => {    
+            const damageRelationAccess = typeObj.damage_relations
+            weakness = [...weakness, ...damageRelationAccess.half_damage_to, ...damageRelationAccess.no_damage_to]
+        })
+
+        weakness = weakness.filter((value, index, self) =>
+            index === self.findIndex((t) => (
+                t.name === value.name && t.url === value.url
+            ))
+        )
+
+        pokemon['weakness'] = weakness 
+        res.json(pokemon);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+
+});
+
+
 // start server
 app.listen(port, (err) => {
   if (err) { console.log(err); }
