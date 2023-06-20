@@ -20,12 +20,29 @@ app.use((req, res, next) => {
 app.get('/pokemon', async (req, res) => {
     const sort = req.query.sort
     const order = req.query.order
+    const searchquery = req.query.searchquery
     const limit = parseInt(req.query.limit, 10) || 10000
     const offset = parseInt(req.query.offset) || 0
 
     try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=10000`);
-        const pokemonList = await response.data.results
+        var pokemonList = await response.data.results
+
+        if(searchquery){
+            const filteredPokemonList = await pokemonList.filter((pokemon) => {
+                const lowercaseName = pokemon.name.toLowerCase();
+                const lowercaseQuery = searchquery.toLowerCase();
+
+                //checks for the id, url is filtered through regex
+                const regex = /\/(\d+)\/$/;
+                const match = pokemon.url.match(regex);
+                const id = match ? match[1] : null;
+
+                return lowercaseName.includes(lowercaseQuery) || id.includes(lowercaseQuery);
+            });
+
+            pokemonList = filteredPokemonList
+        }
 
         if(sort === 'name'){
             await pokemonList.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));

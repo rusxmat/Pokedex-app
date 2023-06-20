@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
 
 const PAGE_SIZE = 10;
 
@@ -13,7 +15,7 @@ function PokemonList() {
     const [pokemonList, setPokemonList] = useState([]);
     const [pokemonPageNo, setPokemonPageNo] = useState(0);
     const [selectedSort, setSelectedSort] = useState("ID: Ascending");
-
+    const [searchPokemonQuery, setsearchPokemonQuery] = useState("");
 
     const sortTypes = new Map([
         ["ID: Ascending", ['id', 'asc']],
@@ -31,7 +33,7 @@ function PokemonList() {
 
     useEffect(() => {
         fetchPokemonList();
-    }, [selectedSort]);
+    }, [selectedSort, searchPokemonQuery]);
 
     const fetchPokemonList = async () => {
         try {
@@ -42,6 +44,7 @@ function PokemonList() {
                         order: sortTypes.get(selectedSort)[1],
                         offset: PAGE_SIZE*pokemonPageNo,
                         limit: PAGE_SIZE,
+                        searchquery: searchPokemonQuery
                     }
                 }
             )
@@ -58,7 +61,21 @@ function PokemonList() {
                 margin: "0px 10% 0px"
             }}
         >
-        <div>
+
+            <div>
+                <Form>
+                    <Form.Label>Search: </Form.Label>
+                    <Form.Control 
+                        placeholder='Search a Pokemon...'
+                        onChange={(e) => {
+                            setPokemonList([]);
+                            setPokemonPageNo(0);
+                            setsearchPokemonQuery(e.target.value)
+                        }}
+                    ></Form.Control>
+                </Form>
+            </div>
+
             <div>
                 <Dropdown>
                     <Dropdown.Toggle>
@@ -79,36 +96,35 @@ function PokemonList() {
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-        </div>
 
-        {(pokemonList.length > 0)?
-            <InfiniteScroll
-                dataLength={pokemonList.length}
-                next={fetchPokemonList}
-                hasMore={pokemonList.length < pokemonSizeList}
-                style={{
-                    overflowX: "hidden"
-                }}
-            >
-                <Row xs={1} md={5}
+            {(pokemonList.length > 0)?
+                <InfiniteScroll
+                    dataLength={pokemonList.length}
+                    next={fetchPokemonList}
+                    hasMore={pokemonList.length < pokemonSizeList}
                     style={{
-                        margin: '0px'
+                        overflowX: "hidden"
                     }}
                 >
-                    {pokemonList.map((pokemon, index) => (
-                        <Col key={index}
-                            style={{
-                                margin: '0px',
-                                padding: '0.5%'
-                            }}
-                        >
-                            <PokemonCard pokemon={pokemon.url}/>
-                        </Col>
-                    ))}
-                
-            </Row>
-            </InfiniteScroll>      :
-       <       div>Loading...</div>}
+                    <Row xs={1} md={5}
+                        style={{
+                            margin: '0px'
+                        }}
+                    >
+                        {pokemonList.map((pokemon, index) => (
+                            <Col key={index}
+                                style={{
+                                    margin: '0px',
+                                    padding: '0.5%'
+                                }}
+                            >
+                                <PokemonCard pokemon={pokemon.url}/>
+                            </Col>
+                        ))}
+                    
+                </Row>
+                </InfiniteScroll>:
+                <div>Loading...</div>}
        </div>
     );
 }
