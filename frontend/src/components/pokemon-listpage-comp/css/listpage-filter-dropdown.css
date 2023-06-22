@@ -1,0 +1,34 @@
+.filter-input{
+    border-radius: 20px;
+}
+
+.filter-input:focus {
+    border-color: #BB271A;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.01), 0 0 4px #BB271A;
+  }
+
+.filter-section::selection{
+    border-color: #BB271A;
+}
+
+.filter-label{
+    margin: 0px 0px 0px !important;
+    margin-right: 10px !important;
+}
+
+.filter-dropdown-section{
+    margin-bottom: 20px;
+}
+
+.dropdown-comp{
+    border-radius: 20px !important;
+    border-color: rgb(216, 216, 216);
+    background-color: white;
+    color: black;
+}
+
+.dropdown-comp:hover, .dropdown-commp:active{
+    background-color: #BB271A !important;
+    border-color: white !important;
+}
+

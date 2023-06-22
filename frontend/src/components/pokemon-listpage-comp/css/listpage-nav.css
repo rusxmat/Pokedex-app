@@ -1,0 +1,26 @@
+.color-nav{
+    background-color: #BB271A;
+}
+
+.brand-nav{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.brand-logo{
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    transform: scaleY(-1);
+}
+
+.brand-nav:hover{
+    color: white;
+    background-color: rgb(183, 183, 183, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+

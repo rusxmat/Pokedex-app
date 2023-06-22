@@ -1,0 +1,30 @@
+.card-container{
+    width: 100%;
+    outline-color: white;
+    margin: 0px;
+    border-color: rgb(221, 221, 221);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.id-detail{
+    font-size: 14px;
+    color: gray;
+}
+
+.name-detail{
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-bottom: 5px;
+}
+
+.type-card {
+    color: white ;
+    font-size: 12px;
+    font-weight: bold;
+    width: fit-content;
+    padding: 5px 10px 5px !important;
+    border-radius: 20px;
+    margin-right: 5px;
+}

@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container'
+import "./css/listpage-filter-dropdown.css"
 
 const PAGE_SIZE = 10;
 
@@ -15,7 +17,6 @@ function PokemonList() {
     const [pokemonPageNo, setPokemonPageNo] = useState(0);
     const [selectedSort, setSelectedSort] = useState("ID: Ascending");
     const [searchPokemonQuery, setsearchPokemonQuery] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
 
     const sortTypes = new Map([
         ["ID: Ascending", ['id', 'asc']],
@@ -58,43 +59,50 @@ function PokemonList() {
     return (
         <div
             style={{
-                margin: "0px 10% 0px"
+                margin: "100px 10% 0px"
             }}
         >
-            <div>
-                <Form>
-                    <Form.Label>Filter: </Form.Label>
-                    <Form.Control 
-                        placeholder='Search a Pokemon...'
-                        onChange={(e) => {
-                            setPokemonList([]);
-                            setPokemonPageNo(0);
-                            setsearchPokemonQuery(e.target.value)
-                        }}
-                    ></Form.Control>
-                </Form>
-            </div>
-
-            <div>
-                <Dropdown>
-                    <Dropdown.Toggle>
-                        {selectedSort}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                    {sortTypeArray.map((sortTypes) => (
-                        <Dropdown.Item
-                        onClick={(e) => {
-                            setSelectedSort(sortTypes)
-                            setPokemonList([])
-                            setPokemonPageNo(0)
-                        }}
-                        >
-                        {sortTypes}
-                        </Dropdown.Item>
-                    ))}
-                    </Dropdown.Menu>
-                </Dropdown>
-            </div>
+                <Container className="d-flex align-items-center filter-dropdown-section">
+                    <Container class="mr-auto p-2">
+                        <Form>
+                            <Container className="d-flex align-items-center">
+                                <Form.Label className='filter-label'>Filter:</Form.Label>
+                                <Form.Control 
+                                    placeholder='Search a Pokemon...'
+                                    onChange={(e) => {
+                                        setPokemonList([]);
+                                        setPokemonPageNo(0);
+                                        setsearchPokemonQuery(e.target.value)
+                                    }}
+                                    className='filter-input'
+                                ></Form.Control>
+                            </Container>
+                        </Form>
+                    </Container>
+                    <Container class="p-2">
+                        <Container className="d-flex align-items-center">
+                            <Container style={{textAlign: 'right'}} >  Sort by: </Container>
+                            <Dropdown>
+                                <Dropdown.Toggle className='dropdown-comp'>
+                                    {selectedSort}
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                {sortTypeArray.map((sortTypes) => (
+                                    <Dropdown.Item
+                                    onClick={(e) => {
+                                        setSelectedSort(sortTypes)
+                                        setPokemonList([])
+                                        setPokemonPageNo(0)
+                                    }}
+                                    >
+                                    {sortTypes}
+                                    </Dropdown.Item>
+                                ))}
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Container>
+                    </Container>
+                </Container>
 
             {
                 (pokemonList.length > 0)?

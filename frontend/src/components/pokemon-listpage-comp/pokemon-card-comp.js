@@ -1,0 +1,84 @@
+import React, { useEffect, useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import "./css/pokemon-card.css";
+import "../../css/type_color.css";
+
+import { useNavigate } from "react-router-dom";
+import { buildColor } from '../../utilities/utils';
+
+function PokemonCard({pokemon}) {    
+    const navigate = useNavigate();
+    const [pokemonDetails, setPokemonDetails] = useState();
+
+    function handleImageError() {
+        var image = document.getElementsByTagName('img')
+        image.src = "../../assets/pokeball.png";
+    }
+
+    function getDisplayName(pokemonName){
+        const pokemonDisplayName = pokemonName.replace(/-/g, " ");
+        const pokemonDisplayNameSplit = pokemonDisplayName.split(" ");
+
+        for(var i = 0; i<pokemonDisplayNameSplit.length; i++){
+            pokemonDisplayNameSplit[i] = pokemonDisplayNameSplit[i].charAt(0).toUpperCase() + pokemonDisplayNameSplit[i].slice(1);
+        }
+
+        return pokemonDisplayNameSplit.join(" ");
+    }
+
+    useEffect(() => {
+        fetchPokemonDetails();
+    }, []);
+
+    const fetchPokemonDetails = async () => {
+        try {
+            const response = await fetch(pokemon);
+            const data = await response.json();
+            setPokemonDetails(data);
+        } catch (error) {
+            console.error('Failed to fetch data:', error.message);
+        }
+    };
+
+    const handleCardClick = () => {
+        navigate(`/pokemon/${pokemonDetails.id}`);
+    }
+
+    // const buildColor = (type, isPrimary) => {
+    //     var colorString = "rgba(";
+    //     typeToColor[pokemonDetails.types[0].type.name].forEach(element => {
+    //         colorString = colorString.concat(element + ' , ');
+    //     });
+
+    //     colorString = colorString.concat((isPrimary? '1' : '0.75') + ')');
+    //     return colorString
+    // }
+
+    return (
+        pokemonDetails ?
+        (<Card 
+            style={{ background: ('linear-gradient(10deg, #ffffff  50%, rgba(0,0,0,0) 30%), linear-gradient(-10deg, ' + buildColor(pokemonDetails.types[0].type.name, true) + ' 60%, ' + buildColor(pokemonDetails.types[0].type.name, false) + '60%)'), }}
+            className='card-container'
+            onClick={handleCardClick}
+        >
+            <img 
+                src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + (pokemonDetails.id < 10? "00": pokemonDetails.id < 100? "0": "") + pokemonDetails.id + ".png"}
+                onError={handleImageError()}
+                alt = {"Image of " + pokemonDetails.name}
+            />
+            <div className='id-detail'>{"#" + (pokemonDetails.id < 10? "00": pokemonDetails.id < 100? "0": "") + pokemonDetails.id}</div>
+            <div className='name-detail'>{getDisplayName(pokemonDetails.name)}</div>
+            <div className="d-flex">
+                {pokemonDetails.types.map((typeObj, index) => (
+                    <div key={index} className={'p-2 type-card ' + typeObj.type.name + '-color'}
+                        // style={{backgroundColor: (buildColor(typeToColor[typeObj.type.name], true)) }}
+                    >
+                        {(typeObj.type.name).toUpperCase()}
+                    </div>
+                ))}  
+            </div> 
+        </Card>): <></>
+    );
+}
+
+export default PokemonCard;

@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import PokemonList from '../components/pokemon-list-comp';
+import PokemonList from '../components/pokemon-listpage-comp/pokemon-list-comp';
+import ListPageNavBar from '../components/pokemon-listpage-comp/listpage-navbar-comp';
 
 function PokemonListPage() {
 
   return (
     <div >
-        <div>navbar</div>
-        <div>navbar</div>
-        <div>navbar</div>
-        <div>navbar</div>
-        <div>navbar</div>
-        <div>navbar</div>
+        <ListPageNavBar />
         <PokemonList />
     </div>
   );
