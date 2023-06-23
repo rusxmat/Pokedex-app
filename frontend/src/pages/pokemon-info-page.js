@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import DetailPageNavBar from "../components/pokemon-detailpage-comp/detailpage-navbar.js";
 import PokemonDetailCard from "../components/pokemon-detailpage-comp/pokemon-detailcard-comp.js";
 import PokemonContent from "../components/pokemon-detailpage-comp/pokemon-detailcontent-comp.js";
+import "./css/pokemon-info-page.css"
 
 function PokemonInfoPage() {
     const id = parseInt(useLocation().pathname.split("/")[2]);

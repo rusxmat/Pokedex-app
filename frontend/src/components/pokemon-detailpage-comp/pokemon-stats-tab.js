@@ -97,11 +97,11 @@ function PokemonStatsTab({pokemon}) {
                             })}
                             <div>
                                 <span>{"Weight:  "}</span>
-                                <span className='hidden-type-value'>{pokemon.weight}</span>
+                                <span className='hidden-type-value'>{String(pokemon.weight/10) + " kg"}</span>
                             </div>
                             <div>
                                 <span>{"Height: "}</span>
-                                <span className='hidden-type-value'>{pokemon.height}</span>
+                                <span className='hidden-type-value'>{String(pokemon.height*10) + " cm"}</span>
                             </div>
                         </Col>
                         <Col>
