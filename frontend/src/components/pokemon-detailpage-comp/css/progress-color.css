@@ -1,0 +1,71 @@
+.bg-bug-color{
+    background-color: rgb(169, 187, 35) !important;
+}
+
+.bg-dark-color{
+    background-color: rgb(80, 58, 43) !important;
+}
+
+.bg-dragon-color{
+    background-color: rgb(116, 93, 220) !important;
+}
+
+.bg-electric-color{
+    background-color: rgb(250, 185, 20) !important;
+}
+
+.bg-fairy-color{
+    background-color: rgb(243, 179, 243) !important;
+}
+
+.bg-fighting-color{
+    background-color: rgb(121, 52, 28) !important;
+}
+
+.bg-fire-color{
+    background-color: rgb(238, 64, 14) !important;
+}
+
+.bg-flying-color{
+    background-color: rgb(140, 162, 239) !important;
+}
+
+.bg-ghost-color{
+    background-color: rgb(99, 97, 175) !important;
+}
+
+.bg-grass-color{
+    background-color: rgb(111, 192, 51) !important;
+}
+
+.bg-ground-color{
+    background-color: rgb(209, 176, 85) !important;
+}
+
+.bg-ice-color{
+    background-color: rgb(155, 229, 253) !important;
+}
+
+.bg-normal-color{
+    background-color: rgb(197, 193, 183) !important;
+}
+
+.bg-poison-color{
+    background-color: rgb(149, 72, 149) !important;
+}
+
+.bg-psychic-color{
+    background-color: rgb(231, 76, 130) !important;
+}
+
+.bg-rock-color{
+    background-color: rgb(185, 166, 94) !important;
+}
+
+.bg-steel-color{
+    background-color: rgb(193, 191, 205) !important;
+}
+
+.bg-water-color{
+    background-color: rgb(83, 162, 239) !important;
+}

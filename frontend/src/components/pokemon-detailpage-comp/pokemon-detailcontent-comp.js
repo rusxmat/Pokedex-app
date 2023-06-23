@@ -5,6 +5,7 @@ import "./css/pokemon-content-section.css"
 import PokemonStatsTab from './pokemon-stats-tab';
 import "../../css/type_color.css";
 import PokemonAbilityCard from './pokemon-abilitiycard-comp';
+import Container from 'react-bootstrap/esm/Container';
 
 function PokemonContent({pokemon}) {
   const [key, setKey] = useState('about');
@@ -19,11 +20,13 @@ function PokemonContent({pokemon}) {
             <PokemonStatsTab pokemon={pokemon}/>
         </Tab>
         <Tab eventKey="ability" title="Abilities" tabClassName='content-group-tab'>
-            {pokemon.abilities.map((abilityObj, index) => (
-                <div key={index}>
-                    <PokemonAbilityCard ability={abilityObj.ability}/>
-                </div>
-            ))}  
+            <Container>
+                {pokemon.abilities.map((abilityObj, index) => (
+                    <div key={index}>
+                        <PokemonAbilityCard ability={abilityObj.ability} pokemonType={pokemon.types[0].type.name}/>
+                    </div>
+                ))}  
+            </Container>
         </Tab>
         </Tabs>
   );

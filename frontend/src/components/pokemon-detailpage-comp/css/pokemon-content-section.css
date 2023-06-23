@@ -10,7 +10,7 @@
 }
 
 .content-group-tab{
-    color: #BB271A !important;
+    color: black !important;
     font-weight: bold;
 }
 
@@ -18,10 +18,6 @@
     height: 30px;
     border-radius: 20px;
     background-color: white;
-}
-
-.bg-custom-progress{
-    background-color: #BB271A !important;
 }
 
 .basestats-container{
@@ -35,6 +31,7 @@
     font-size: 20px;
     margin: 10px;
     font-weight: bold;
+    color: #BB271A;
 }
 
 .carousel-desc-section{

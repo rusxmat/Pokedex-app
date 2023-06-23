@@ -7,6 +7,7 @@ import { statTotalValue } from '../../utilities/constants';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import Carousel from 'react-bootstrap/Carousel';
+import "./css/progress-color.css"
 
 function PokemonStatsTab({pokemon}) {
     const [pokemonSpecies, setPokemonSpecies] = useState()
@@ -29,7 +30,7 @@ function PokemonStatsTab({pokemon}) {
     <Container>
 
         <Container className='details-section-tab-container'>
-                <div className='wthn-tab-section-title'>
+                <div className={'wthn-tab-section-title ' + pokemon.types[0].type.name + '-color-color'}>
                     Base Stats
                 </div>
                 <Container className='basestats-container'>
@@ -43,7 +44,7 @@ function PokemonStatsTab({pokemon}) {
                                     <Col sm={9}>
                                     <ProgressBar
                                             className='progress-bar-custom'
-                                            variant={'custom-progress'}
+                                            variant={pokemon.types[0].type.name + '-color'}
                                             now={getPercentage(statObj.base_stat, statTotalValue)} label={`${statObj.base_stat}`} 
                                         />
                                     </Col>
@@ -56,7 +57,7 @@ function PokemonStatsTab({pokemon}) {
 
         {pokemonSpecies? <div>
             <Container className='details-section-tab-container'>
-                <div className='wthn-tab-section-title'>
+                <div className={'wthn-tab-section-title ' + pokemon.types[0].type.name + '-color-color'}>
                     Species Description
                 </div>
                 <Container className='carousel-desc-section'>
@@ -80,7 +81,7 @@ function PokemonStatsTab({pokemon}) {
             </Container>
 
             <Container className='details-section-tab-container'>
-                <div className='wthn-tab-section-title'>
+                <div className={'wthn-tab-section-title ' + pokemon.types[0].type.name + '-color-color'}>
                     Hidden Stats
                 </div>
                 <Container className='hidden-stats-section'>
@@ -123,7 +124,7 @@ function PokemonStatsTab({pokemon}) {
         </div>: <div>Loading..</div>}
 
         <Container className='details-section-tab-container'>
-            <div className='wthn-tab-section-title'>
+            <div className={'wthn-tab-section-title '+ pokemon.types[0].type.name + '-color-color'}>
                 Weakness
             </div>
             <Container className='weakness-section'>
