@@ -9,6 +9,11 @@
     margin-bottom: 10px;
 }
 
+.content-group-tab{
+    color: #BB271A !important;
+    font-weight: bold;
+}
+
 .progress-bar-custom{
     height: 30px;
     border-radius: 20px;

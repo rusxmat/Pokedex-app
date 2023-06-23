@@ -9,20 +9,16 @@ import PokemonAbilityCard from './pokemon-abilitiycard-comp';
 function PokemonContent({pokemon}) {
   const [key, setKey] = useState('about');
 
-
-
   return (
-    // <Container className='content-section'>
         <Tabs
-            id="controlled-tab-example"
             activeKey={key}
             onSelect={(k) => setKey(k)}
-            className="mb-3"
+            className="mb-3 content-group-tab"
         >
-        <Tab eventKey="about" title="About">
+        <Tab eventKey="about" title="About" tabClassName='content-group-tab'>
             <PokemonStatsTab pokemon={pokemon}/>
         </Tab>
-        <Tab eventKey="ability" title="Abilities">
+        <Tab eventKey="ability" title="Abilities" tabClassName='content-group-tab'>
             {pokemon.abilities.map((abilityObj, index) => (
                 <div key={index}>
                     <PokemonAbilityCard ability={abilityObj.ability}/>
@@ -30,7 +26,6 @@ function PokemonContent({pokemon}) {
             ))}  
         </Tab>
         </Tabs>
-    // </Container>
   );
 }
 

@@ -64,8 +64,8 @@ function PokemonList() {
                 margin: "100px 10% 100px"
             }}
         >
-                <Container className="d-flex align-items-center filter-dropdown-section">
-                    <Container class="mr-auto p-2">
+                <Row className="d-flex align-items-center filter-dropdown-section">
+                    <Col class="mr-auto p-2">
                         <Form>
                             <Container className="d-flex align-items-center">
                                 <Form.Label className='filter-label'>Filter:</Form.Label>
@@ -80,8 +80,8 @@ function PokemonList() {
                                 ></Form.Control>
                             </Container>
                         </Form>
-                    </Container>
-                    <Container class="p-2">
+                    </Col>
+                    <Col class="p-2">
                         <Container className="d-flex align-items-center">
                             <Container style={{textAlign: 'right'}} >  Sort by: </Container>
                             <Dropdown>
@@ -103,8 +103,8 @@ function PokemonList() {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Container>
-                    </Container>
-                </Container>
+                    </Col>
+                </Row>
 
             {
                 (pokemonList.length > 0)?

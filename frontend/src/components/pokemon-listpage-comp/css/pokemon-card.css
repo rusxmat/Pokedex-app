@@ -1,5 +1,6 @@
 .card-container{
     width: 100%;
+    height: 100%;
     outline-color: white;
     margin: 0px;
     border-color: rgb(221, 221, 221);
@@ -11,6 +12,7 @@
 .card-container:hover{
     background-color: gray !important;
     transform: translateY(-5px);
+    cursor: pointer;
 }
 
 .id-detail{

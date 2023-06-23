@@ -37,7 +37,9 @@ function PokemonInfoPage() {
             <div style={{margin: "40px 10% 100px"}}>
                 {pokemon ? 
                     <Row>
-                        <Col sm={4}>
+                        <Col sm={4}
+                            style={{marginBottom: "20px"}}
+                        >
                             <PokemonDetailCard pokemon={pokemon}/> 
                         </Col>
                         <Col sm={8}>

@@ -10,11 +10,6 @@ function PokemonCard({pokemon}) {
     const navigate = useNavigate();
     const [pokemonDetails, setPokemonDetails] = useState();
 
-    function handleImageError() {
-        var image = document.getElementsByTagName('img')
-        image.src = "../../assets/pokeball.png";
-    }
-
     useEffect(() => {
         fetchPokemonDetails();
     }, []);
@@ -41,8 +36,8 @@ function PokemonCard({pokemon}) {
             onClick={handleCardClick}
         >
             <img 
+                id="card-img"
                 src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + (pokemonDetails.id < 10? "00": pokemonDetails.id < 100? "0": "") + pokemonDetails.id + ".png"}
-                onError={handleImageError()}
                 alt = {"Image of " + pokemonDetails.name}
             />
             <div className='id-detail'>{"#" + (pokemonDetails.id < 10? "00": pokemonDetails.id < 100? "0": "") + pokemonDetails.id}</div>
