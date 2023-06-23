@@ -7,6 +7,10 @@
     padding: 10px;
 }
 
+.card-container:hover{
+    background-color: gray !important;
+}
+
 .id-detail{
     font-size: 14px;
     color: gray;

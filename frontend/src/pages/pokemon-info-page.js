@@ -1,7 +1,6 @@
 import {useLocation} from "react-router-dom";
 import Col from "react-bootstrap/esm/Col.js";
 import Row from "react-bootstrap/esm/Row.js";
-import Card from "react-bootstrap/esm/Card.js"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DetailPageNavBar from "../components/pokemon-detailpage-comp/detailpage-navbar.js";

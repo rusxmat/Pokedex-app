@@ -4,6 +4,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import "./css/pokemon-content-section.css"
 import PokemonStatsTab from './pokemon-stats-tab';
 import "../../css/type_color.css";
+import PokemonAbilityCard from './pokemon-abilitiycard-comp';
 
 function PokemonContent({pokemon}) {
   const [key, setKey] = useState('home');
@@ -18,12 +19,16 @@ function PokemonContent({pokemon}) {
         onSelect={(k) => setKey(k)}
         className="mb-3"
         >
-        <Tab eventKey="home" title="Stats">
+        <Tab eventKey="home" title="About">
             <PokemonStatsTab pokemon={pokemon}/>
 
         </Tab>
         <Tab eventKey="profile" title="Abilities">
-            Tab content for Profile
+            {pokemon.abilities.map((abilityObj, index) => (
+                <div key={index}>
+                    <PokemonAbilityCard ability={abilityObj.ability}/>
+                </div>
+            ))}  
         </Tab>
         </Tabs>
     // </Container>

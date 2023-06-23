@@ -27,7 +27,27 @@
 }
 
 .wthn-tab-section-title{
-    font-size: 20px;
-    margin: 5px;
+    font-size: 16;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.carousel-desc-section{
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+}
+
+.carousell-desc-item{
+    padding: 20px !important;
+    padding-bottom: 40px !important;
+}
+
+.desc-version{
+    color: rgb(97, 97, 97);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.hidden-type-value{
     font-weight: bold;
 }
