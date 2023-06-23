@@ -5,10 +5,12 @@
     border-color: rgb(221, 221, 221);
     border-radius: 10px;
     padding: 10px;
+    transition: transform 0.3s ease;
 }
 
 .card-container:hover{
     background-color: gray !important;
+    transform: translateY(-5px);
 }
 
 .id-detail{

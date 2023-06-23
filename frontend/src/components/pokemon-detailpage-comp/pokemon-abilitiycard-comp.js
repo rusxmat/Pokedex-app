@@ -1,7 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import React, { useEffect, useState } from 'react';
-import { buildColor, getDisplayName } from '../../utilities/utils';
-import "./css/pokemon-detailcard.css"
+import { getDisplayName } from '../../utilities/utils';
+import "./css/ability-card.css"
+import Carousel from 'react-bootstrap/Carousel';
 
 function PokemonAbilityCard({ability}) {
     const [abilityDetails, setAbilityDetails] = useState();
@@ -22,8 +23,24 @@ function PokemonAbilityCard({ability}) {
 
     return (
         abilityDetails?
-        <Card >
-            {abilityDetails.name}
+        <Card className='ability-card-container'>
+            <Card.Title className='ability-title'>
+                {getDisplayName(abilityDetails.name)}
+            </Card.Title>
+                {abilityDetails.effect_entries.map((entry, i) => {
+                    if(entry.language.name == "en"){
+                        return <div key={i}>
+                            <div className='ability-effect'>   
+                                <span className='effect-label'>{"Effect: "}</span>
+                                <span>{entry.effect}</span>
+                            </div>
+                            <div>
+                                <span className='effect-label'>{"Short Effect: "}</span>
+                                <span>{entry.short_effect}</span>
+                            </div>
+                        </div>
+                    }
+                })}
         </Card>: <></>
     );
 }
