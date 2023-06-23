@@ -8,11 +8,13 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import "./css/listpage-filter-dropdown.css"
+import Button from 'react-bootstrap/esm/Button';
+import {totalPokemon} from '../../utilities/constants.js'
 
 const PAGE_SIZE = 10;
 
 function PokemonList() {
-    const [pokemonSizeList, setpokemonSizeList] = useState(1000);
+    const [pokemonSizeList, setpokemonSizeList] = useState(totalPokemon);
     const [pokemonList, setPokemonList] = useState([]);
     const [pokemonPageNo, setPokemonPageNo] = useState(0);
     const [selectedSort, setSelectedSort] = useState("ID: Ascending");
@@ -59,7 +61,7 @@ function PokemonList() {
     return (
         <div
             style={{
-                margin: "100px 10% 0px"
+                margin: "100px 10% 100px"
             }}
         >
                 <Container className="d-flex align-items-center filter-dropdown-section">
@@ -132,8 +134,16 @@ function PokemonList() {
                         
                     </Row>
                     </InfiniteScroll>:
-                    <div>No Pokemon found</div>
+                    <div className="d-flex justify-content-center none-found-msg" >No Pokemon found</div>
             }
+            {(pokemonList.length < pokemonSizeList) ?
+                    <Container className="d-flex justify-content-center" >
+                        <Button 
+                            onClick={fetchPokemonList}
+                            className='load-more-button'
+                        >Click This or Scroll to Load More</Button>
+                    </Container>
+            : <></>}
        </div>
     );
 }

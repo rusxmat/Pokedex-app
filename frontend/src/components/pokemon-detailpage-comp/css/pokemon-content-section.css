@@ -1,0 +1,33 @@
+.content-section{
+    padding: 10px !important;
+    border-radius: 10px;
+    outline-color: rgb(221, 221, 221) !important;
+    outline-style: solid;
+}
+
+.progress-bar-instance{
+    margin-bottom: 10px;
+}
+
+.progress-bar-custom{
+    height: 30px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.bg-custom-progress{
+    background-color: #BB271A !important;
+}
+
+.basestats-container{
+    padding: 20px;
+    padding-bottom: 10px !important;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+}
+
+.wthn-tab-section-title{
+    font-size: 20px;
+    margin: 5px;
+    font-weight: bold;
+}

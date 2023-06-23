@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PokemonList from '../components/pokemon-listpage-comp/pokemon-list-comp';
 import ListPageNavBar from '../components/pokemon-listpage-comp/listpage-navbar-comp';
 

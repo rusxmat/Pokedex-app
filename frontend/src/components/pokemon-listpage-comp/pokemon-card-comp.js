@@ -4,7 +4,7 @@ import "./css/pokemon-card.css";
 import "../../css/type_color.css";
 
 import { useNavigate } from "react-router-dom";
-import { buildColor } from '../../utilities/utils';
+import { buildColor, getDisplayName } from '../../utilities/utils';
 
 function PokemonCard({pokemon}) {    
     const navigate = useNavigate();
@@ -13,17 +13,6 @@ function PokemonCard({pokemon}) {
     function handleImageError() {
         var image = document.getElementsByTagName('img')
         image.src = "../../assets/pokeball.png";
-    }
-
-    function getDisplayName(pokemonName){
-        const pokemonDisplayName = pokemonName.replace(/-/g, " ");
-        const pokemonDisplayNameSplit = pokemonDisplayName.split(" ");
-
-        for(var i = 0; i<pokemonDisplayNameSplit.length; i++){
-            pokemonDisplayNameSplit[i] = pokemonDisplayNameSplit[i].charAt(0).toUpperCase() + pokemonDisplayNameSplit[i].slice(1);
-        }
-
-        return pokemonDisplayNameSplit.join(" ");
     }
 
     useEffect(() => {
@@ -44,20 +33,10 @@ function PokemonCard({pokemon}) {
         navigate(`/pokemon/${pokemonDetails.id}`);
     }
 
-    // const buildColor = (type, isPrimary) => {
-    //     var colorString = "rgba(";
-    //     typeToColor[pokemonDetails.types[0].type.name].forEach(element => {
-    //         colorString = colorString.concat(element + ' , ');
-    //     });
-
-    //     colorString = colorString.concat((isPrimary? '1' : '0.75') + ')');
-    //     return colorString
-    // }
-
     return (
         pokemonDetails ?
         (<Card 
-            style={{ background: ('linear-gradient(10deg, #ffffff  50%, rgba(0,0,0,0) 30%), linear-gradient(-10deg, ' + buildColor(pokemonDetails.types[0].type.name, true) + ' 60%, ' + buildColor(pokemonDetails.types[0].type.name, false) + '60%)'), }}
+            style={{ background: ('linear-gradient(10deg, #ffffff  50%, rgba(0,0,0,0) 30%), linear-gradient(10deg, ' + buildColor(pokemonDetails.types[0].type.name, false) + ' 60%, ' + buildColor(pokemonDetails.types[0].type.name, true) + '60%)'), }}
             className='card-container'
             onClick={handleCardClick}
         >
@@ -71,7 +50,6 @@ function PokemonCard({pokemon}) {
             <div className="d-flex">
                 {pokemonDetails.types.map((typeObj, index) => (
                     <div key={index} className={'p-2 type-card ' + typeObj.type.name + '-color'}
-                        // style={{backgroundColor: (buildColor(typeToColor[typeObj.type.name], true)) }}
                     >
                         {(typeObj.type.name).toUpperCase()}
                     </div>

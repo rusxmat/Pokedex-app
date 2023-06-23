@@ -1,6 +1,8 @@
 const pokemonIdNormalEnd = 1010
 const specialPokemonIdStart = 10001
 const specialPokemonIdEnd = 10271
+const totalPokemon = 1281
+const statTotalValue = 255
 
 const typeToColor = {
     "bug": ['169', '187', '35'],
@@ -23,4 +25,4 @@ const typeToColor = {
     "water": ["83", "162", "239"]
   };
 
-export {specialPokemonIdEnd, specialPokemonIdStart, pokemonIdNormalEnd, typeToColor}
+export {specialPokemonIdEnd, specialPokemonIdStart, pokemonIdNormalEnd, typeToColor, totalPokemon, statTotalValue}

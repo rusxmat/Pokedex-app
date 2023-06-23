@@ -1,0 +1,54 @@
+.detail-nav{
+    background-color: #BB271A;
+    padding: 8px 10%;
+}
+
+.remove-padding{
+    padding: 0px !important;
+}
+
+.text-nav{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0.5rem;
+}
+
+.left-pad{
+    padding-left: 16px !important;
+}
+
+.right-pad{
+    padding-right: 16px !important;
+}
+
+.brand-nav{
+    padding-right: 16px !important;
+    margin-left: -10px !important;
+    margin: 5px;
+    padding: 10px;
+}
+
+.nav-icons{
+    height: 15px;
+    width: 15px;
+    margin: 5px;
+}
+
+.brand-icon{
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    transform: scaleY(-1);
+}
+
+.text-nav:hover{
+    color: white;
+    background-color: rgb(183, 183, 183, 0.5);
+    border-radius: 5px;
+}
+
+.no-nav-button{
+    width: 10px;
+}
+

@@ -1,12 +1,14 @@
-import {useLocation, useNavigate} from "react-router-dom";
-import Card from 'react-bootstrap/Card';
-import Button from "react-bootstrap/esm/Button";
+import {useLocation} from "react-router-dom";
+import Col from "react-bootstrap/esm/Col.js";
+import Row from "react-bootstrap/esm/Row.js";
+import Card from "react-bootstrap/esm/Card.js"
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {specialPokemonIdEnd, specialPokemonIdStart, pokemonIdNormalEnd} from '../utilities/constants.js'
+import DetailPageNavBar from "../components/pokemon-detailpage-comp/detailpage-navbar.js";
+import PokemonDetailCard from "../components/pokemon-detailpage-comp/pokemon-detailcard-comp.js";
+import PokemonContent from "../components/pokemon-detailpage-comp/pokemon-detailcontent-comp.js";
 
 function PokemonInfoPage() {
-    const navigate = useNavigate();
     const id = parseInt(useLocation().pathname.split("/")[2]);
     const [pokemon, setPokemon] = useState()
 
@@ -30,44 +32,22 @@ function PokemonInfoPage() {
         }
     };
 
-    const handleMovePage = (moveNext) => {
-        navigate(`/pokemon/` + 
-            (moveNext? 
-                (id !== pokemonIdNormalEnd) ?
-                    id+1 
-                : specialPokemonIdStart
-            : 
-                (id !== specialPokemonIdStart) ?
-                   id-1
-                : pokemonIdNormalEnd
-            )
-        );
-    }
 
-    return (
-        pokemon ? 
-        <div >
-            <Card>
-                {pokemon.name}
-            </Card>
-
-            {(id > 1)?
-                <Button onClick={(e) => {
-                    handleMovePage(false);
-                    }}>
-                    Previous
-                </Button>:<></>
-            }
-
-            {(id <= pokemonIdNormalEnd || (id < specialPokemonIdEnd && id >= specialPokemonIdStart))?
-                <Button onClick={(e) => {
-                    handleMovePage(true);
-                    }}>
-                    Next
-                </Button>:<></>
-            }       
-
-        </div> : <></>
+    return (<div>
+        <DetailPageNavBar/>
+            <div style={{margin: "40px 10% 100px"}}>
+                {pokemon ? 
+                    <Row>
+                        <Col sm={4}>
+                            <PokemonDetailCard pokemon={pokemon}/> 
+                        </Col>
+                        <Col sm={8}>
+                            <PokemonContent pokemon={pokemon}/>
+                        </Col>
+                    </Row>
+                : <></>}
+            </div>
+        </div>
     );
 }
 

@@ -1,72 +1,72 @@
 .bug-color{
-    background-color: rgb(169, 187, 35);
+    background-color: rgb(169, 187, 35) !important;
 }
 
 .dark-color{
-    background-color: rgb(80, 58, 43);
+    background-color: rgb(80, 58, 43) !important;
 }
 
 .dragon-color{
-    background-color: rgb(116, 93, 220);
+    background-color: rgb(116, 93, 220) !important;
 }
 
 .electric-color{
-    background-color: rgb(250, 185, 20);
+    background-color: rgb(250, 185, 20) !important;
 }
 
 .fairy-color{
-    background-color: rgb(243, 179, 243);
+    background-color: rgb(243, 179, 243) !important;
 }
 
 .fighting-color{
-    background-color: rgb(121, 52, 28);
+    background-color: rgb(121, 52, 28) !important;
 }
 
 .fire-color{
-    background-color: rgb(238, 64, 14);
+    background-color: rgb(238, 64, 14) !important;
 }
 
 .flying-color{
-    background-color: rgb(140, 162, 239);
+    background-color: rgb(140, 162, 239) !important;
 }
 
 .ghost-color{
-    background-color: rgb(99, 97, 175);
+    background-color: rgb(99, 97, 175) !important;
 }
 
 .grass-color{
-    background-color: rgb(111, 192, 51);
+    background-color: rgb(111, 192, 51) !important;
 }
 
 .ground-color{
-    background-color: rgb(209, 176, 85);
+    background-color: rgb(209, 176, 85) !important;
 }
 
 .ice-color{
-    background-color: rgb(155, 229, 253);
+    background-color: rgb(155, 229, 253) !important;
 }
 
 .normal-color{
-    background-color: rgb(197, 193, 183);
+    background-color: rgb(197, 193, 183) !important;
 }
 
 .poison-color{
-    background-color: rgb(149, 72, 149);
+    background-color: rgb(149, 72, 149) !important;
 }
 
 .psychic-color{
-    background-color: rgb(231, 76, 130);
+    background-color: rgb(231, 76, 130) !important;
 }
 
 .rock-color{
-    background-color: rgb(185, 166, 94);
+    background-color: rgb(185, 166, 94) !important;
 }
 
 .steel-color{
-    background-color: rgb(193, 191, 205);
+    background-color: rgb(193, 191, 205) !important;
 }
 
 .water-color{
-    background-color: rgb(83, 162, 239);
+    background-color: rgb(83, 162, 239) !important;
 }
 

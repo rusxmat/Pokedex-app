@@ -32,3 +32,26 @@
     border-color: white !important;
 }
 
+.load-more-button{
+    border-radius: 25px !important;
+    padding: 12px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    font-size: 14px;
+    border-color: #BB271A;
+    color: #BB271A !important;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 10px;
+    position: fixed;
+    bottom: 0;
+}
+
+.load-more-button:hover{
+    color: white !important;
+    background-color: #BB271A;
+    border-color: #BB271A;
+}
+
+.none-found-msg{
+    margin: 200px;
+}
