@@ -92,9 +92,11 @@ function PokemonList() {
                                 {sortTypeArray.map((sortTypes) => (
                                     <Dropdown.Item
                                     onClick={(e) => {
-                                        setSelectedSort(sortTypes)
-                                        setPokemonList([])
-                                        setPokemonPageNo(0)
+                                        if(selectedSort !== sortTypes){
+                                            setSelectedSort(sortTypes)
+                                            setPokemonList([])
+                                            setPokemonPageNo(0)
+                                        }
                                     }}
                                     >
                                     {sortTypes}
